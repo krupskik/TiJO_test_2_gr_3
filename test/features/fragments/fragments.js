@@ -27,10 +27,10 @@ var fragments = function (text)
     'use strict';
 
     var mapping = {
-        middleButton: element,
-        warningAlert: element,
-        input: element,
-        header: element
+        middleButton: element.bind(null, by.id('buttKrupski')),
+        warningAlert: element.bind(null, by.id('warKrupski')),
+        input: element.bind(null, by.id('inpKrupski')),
+        header: element.bind(null, by.id('headKrupski'))
     };
 
     return byString(mapping, text);
