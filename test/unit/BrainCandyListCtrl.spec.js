@@ -1,9 +1,8 @@
-describe("BrainCandyListCtrl", function () {
+describe('BrainCandyListCtrl', function () {
     'use strict';
     beforeEach(module('exerciseApp'));
     var brainCandyListCtrl;
     var CandyDAOmock;
-    var CandyDAO_mock;
     var sequence = 1;
     var candies = {};
     [
@@ -23,37 +22,23 @@ describe("BrainCandyListCtrl", function () {
             factory: 'Wawel'
         }
     ].every(function (value) {
-        candies[value.id] = value;
-        return true;;
-    });
-    beforeEach(function (arg) {
-        CandyDAOmock = jasmine.createSpyObj('CandyDAO', ['query']);
-        CandyDAOmock.query.andReturn({
-            then: function (callback) {
-                callback(candies);
-                return this
-            }
+            candies[value.id] = value;
+            return true;
         });
-    });
     beforeEach(inject(function ($controller) {
-        brainCandyListCtrl = $controller('BrainCandyListCtrl', {CandyDAO: CandyDAOmock})
-
+        brainCandyListCtrl = $controller('BrainCandyListCtrl', {CandyDAO: CandyDAOmock});
     }));
-
-    describe("CandyDAO.query()", function () {
-        it("should be called", function () {
+    describe('CandyDAO.query()', function () {
+        it('should be called', function () {
             expect(CandyDAOmock.query).toHaveBeenCalled();
         });
     });
-
-    describe("variable  list", function () {
-        it("should exist", function () {
+    describe('variable list', function () {
+        it('should exist', function () {
             expect(brainCandyListCtrl.list).not.toBe(undefined);
         });
-
-        it("should be a object", function (test) {
-            expect('object' == typeof brainCandyListCtrl.list).toBe(true);
+        it('should be a object', function () {
+            expect('object' === typeof brainCandyListCtrl.list).toBe(true);
         });
-
     });
 });
